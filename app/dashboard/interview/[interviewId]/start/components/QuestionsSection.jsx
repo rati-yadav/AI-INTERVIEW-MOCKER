@@ -2,6 +2,8 @@ import { Lightbulb, Volume2 } from 'lucide-react'
 import React from 'react'
 
 function QuestionsSection({mockInterviewQuestion,activeQuestionIndex}) {
+    console.log("mockInterviewQuestion =", mockInterviewQuestion);
+    console.log("type =", typeof mockInterviewQuestion);
  
     
     const textToSpeach=(text)=>{
@@ -13,11 +15,15 @@ function QuestionsSection({mockInterviewQuestion,activeQuestionIndex}) {
             alert('Sorry, Your browser does not support text to speech')
         }
     }
-    return mockInterviewQuestion&&(
+    if (!Array.isArray(mockInterviewQuestion) || mockInterviewQuestion.length === 0) {
+        return null;
+    }
+
+    return (
     <div className='p-5 border rounded-lg my-10'>
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
-            {mockInterviewQuestion&&mockInterviewQuestion.map((question,index)=>(
-                <h2 className={`p-2 border rounded-full
+            {mockInterviewQuestion.map((question,index)=>(
+                <h2 key={index} className={`p-2 border rounded-full
                 text-xs md:text-sm text-center cursor-pointer
                 ${activeQuestionIndex==index&&'bg-primary text-white'}`}>Question #{index+1}</h2>
             ))}
