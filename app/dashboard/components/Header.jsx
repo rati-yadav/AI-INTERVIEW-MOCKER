@@ -13,6 +13,7 @@ function Header() {
     { href: '/dashboard/questions', label: 'Questions' },
     { href: '/dashboard/upgrade', label: 'Upgrade' },
     { href: '/dashboard/how', label: 'How it Works?' },
+    { href: '/contact', label: 'Contact' },
   ]
 
   return (
